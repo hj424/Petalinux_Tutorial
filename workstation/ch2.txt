@@ -36,7 +36,7 @@
         (4) device drivers → enable staging drivers; Xilinx APF accelerator driver; Xilinx APF DMA engines support
         (5) general setup → enable Initial RAM filesystem and RAM disk (initramfs/initrd) support
         
-Now you can get the same FPGA petalinux files like (/workstation/uImage, /workstation/devicetree.dtb, /workstation/uramdisk) in the current folder: <path to your petalinux project>/images/linux/
+Now you can get the same FPGA petalinux files like (/workstation/uImage, /workstation/devicetree.dtb, /workstation/uramdisk.image.gz, /workstation/rootfs.cpio) in the current folder: <path to your petalinux project>/images/linux/
 * Please move to /workstation/SDcard.txt to learn how to configure your SD card within these FPGA petalinux files!
         
 Reference: 
