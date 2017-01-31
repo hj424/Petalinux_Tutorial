@@ -21,5 +21,7 @@
     $ echo $PETALINUX
     /opt/petalinux-v2014.2-final
 
+Please move to ch0.txt or ch1.txt to keep building your FPGA petalinux within the workstation petalinux!
+
 Reference: UG967 Petalinux Tools User Guide - Installation Guide (v2014.2) 
 link: https://www.xilinx.com/support/documentation/sw_manuals/petalinux2014_2/ug976-petalinux-installation.pdf
