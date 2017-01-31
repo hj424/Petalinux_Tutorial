@@ -84,7 +84,7 @@
     $ mv rootfs.cpio.gz uramdisk.image.gz
 
 Now you can get the same FPGA petalinux files like (/workstation/uImage, /workstation/devicetree.dtb, /workstation/uramdisk) in the current folder: <path to your petalinux project>/images/linux/
-Please move to /workstation/SDcard.txt to learn how to configure your SD card within these FPGA petalinux files!
+* Please move to /workstation/SDcard.txt to learn how to configure your SD card within these FPGA petalinux files!
 
 Reference: 
 (1) UG1144 Petalinux Tools Documentaion - Refenerce Guide (v2015.4)
