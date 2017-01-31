@@ -1,0 +1,25 @@
+///////////////////////////////////////////////////////////////////////////////////////
+// Chapter 0. Workstation petalinux installation guide
+///////////////////////////////////////////////////////////////////////////////////////
+1. Prerequisites for the workstation
+  (1) 2GB RAM
+  (2) Pentium 4 2GHz CPU clock or equivalent
+  (3) 5GB free HDD space
+  (4) Linux based OS: RHEL, SUSE, Ubuntu, etc.
+2. Download petalinux, say Petalinux 2015.4 Installer
+  link: https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/2015-4.html
+3. Install petalinux
+    e.g. to install workstation petalinux under "/opt/pkg"
+    $ cd /opt/pkg
+    $ petalinux-v2015.4-final-installer.run
+4. Setup workstation petalinux working environment
+    For Bash:
+        $ source <path-to-installed-PetaLinux>/settings.sh
+    For C shell:
+        $ source <path-to-installed-PetaLinux>/settings.csh
+5. Verify the working envoronment 
+    $ echo $PETALINUX
+    /opt/petalinux-v2014.2-final
+
+Reference: UG967 Petalinux Tools User Guide - Installation Guide (v2014.2) 
+link: https://www.xilinx.com/support/documentation/sw_manuals/petalinux2014_2/ug976-petalinux-installation.pdf
