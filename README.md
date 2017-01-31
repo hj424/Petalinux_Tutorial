@@ -7,9 +7,7 @@
 ##### Authors : Baohui Wang (bhwang@tju.edu.cn); Hanchen Jin (hj424@cornell.edu)
 ##### Date    : Jan. 31, 2017
 ##### Version : 2.0
-
-**CONTENT**
-
+#####**CONTENT**
 1. commands - including some general commands of Petalinux and the specific configuration for our design
 2. configs - details about Linux configuration
   1. general configuration 
