@@ -1,0 +1,46 @@
+///////////////////////////////////////////////////////////////////////////////////////
+// Chapter 2. Building FPGA petalinux from shell script
+///////////////////////////////////////////////////////////////////////////////////////
+1. Download file /workstation/petalinux.sh and move it into the directory of your FPGA petalinux project
+
+2. Run the shell script by the following commands:
+    $ chmod r+s petalinux.sh
+    $ ./petalinux.sh or $ sh petalinux.sh or $ source petalinux.sh
+
+3. Follow the notifications to build the FPGA petalinux
+    For the GUI configuration, please use the following guide:
+    3.1 General configration
+        $ cd <directory of petalinux project>
+        $ petalinux-config
+
+        (1) Image Packing Configuration → Root filesystem type → SD card (For permanent root file system storage)
+        (2) Auto Config Settings ---> [ ] kernel autoconfig ***Disable the kernel auto configure setting***
+        
+    3.2 Root file system configration
+        $ cd <directory of petalinux project>
+        $ petalinux-config -c rootfs
+        * enable ssh remote login
+        (1) Filesystem Packages → console/network → dropbear → enable dropbear-openssh-sftp-server
+        (2) Filesystem Packages → console/network → openssh → enable openssh-sftp-server
+        * enable libray and function for SDSoC
+        (3) Filesystem Packages → base → openssh → external-xilinx-toolchain → enable libstdc++6
+        (4) Filesystem Packages → base → openssh → external-xilinx-toolchain → enable tcf-agent
+        
+    3.3 Kernel configuration
+        $ cd <directory of petalinux project>
+        $ petalinux-config -c kernel
+        
+        (1) kernel features → enable contiguous memory allocator
+        (2) device drivers → generic driver options → enable DMA contiguous memory allocator 
+        (3) device drivers → generic driver options → size in mega bytes [256]
+        (4) device drivers → enable staging drivers; Xilinx APF accelerator driver; Xilinx APF DMA engines support
+        (5) general setup → enable Initial RAM filesystem and RAM disk (initramfs/initrd) support
+        
+Now you can get the same FPGA petalinux files like (/workstation/uImage, /workstation/devicetree.dtb, /workstation/uramdisk) in the current folder: <path to your petalinux project>/images/linux/
+* Please move to /workstation/SDcard.txt to learn how to configure your SD card within these FPGA petalinux files!
+        
+Reference: 
+(1) UG1144 Petalinux Tools Documentaion - Refenerce Guide (v2015.4)
+    link: https://www.xilinx.com/support/documentation/sw_manuals/petalinux2015_4/ug1144-petalinux-tools-reference-guide.pdf
+(2) UG1146: SDSoC Environment User Guide - Platforms and libraries (v2015.4)
+    link: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2015_4/ug1146-sdsoc-platforms-and-libraries.pdf
