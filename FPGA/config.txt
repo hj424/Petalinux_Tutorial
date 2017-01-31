@@ -12,7 +12,7 @@
     (2) Set up the port with Bad rate 115200
     Details: UG963 - Setting up board communications
     
-3. Mount the SD card automatically when the system boot up
+3. Mount the SD card automatically to /mnt when the system boot up
     $ vi /etc/fstab
     Add the following line:
     /dev/mmcblk0p1  /mnt  auto  defaults,sync,noauto  0  0
