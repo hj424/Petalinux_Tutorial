@@ -1,4 +1,4 @@
-# Petalinux-Tutorial
+# Petalinux_Tutorial
 -- Let's build a FPAG petalinux by the workstation petalinux!
 ### *** Definition clarification:
 ###(1) Workstation(Desktop) petalinux (petalinux 15.4-yocto 1.8): Software design tool for building customized embedded Linux distribution
