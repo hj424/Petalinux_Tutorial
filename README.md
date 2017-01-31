@@ -9,6 +9,7 @@
 ##### Version : 2.0
 
 **CONTENT**
+
 1. commands - including some general commands of Petalinux and the specific configuration for our design
 2. configs - details about Linux configuration
   1. general configuration 
