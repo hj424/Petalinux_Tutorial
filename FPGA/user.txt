@@ -1,0 +1,36 @@
+///////////////////////////////////////////////////////////////////////////////////////
+// Tutorial about using FPGA petalinux
+///////////////////////////////////////////////////////////////////////////////////////
+Background knowledge:
+The SDSoC system compilers generate an SD card image by default in a project subdirectory named sd_card. For Linux applications, this directory includes the following files:
+• README.TXT- contains brief instructions on how to run the application
+• BOOT.BIN - the boot image contains first stage boot loader (FSBL), boot program (u-boot), and the FPGA bitstream
+• uImage, devicetree.dtb, uramdisk.image.gz - Linux boot image
+• <app>.elf - the application binary executable
+
+1. Modify login settings
+  $ vi ~/.ssh/config
+  Add the following piece of code in it:
+  ////////////////////////////////////////
+      Host zhang-zc706-02.ece.cornell.edu
+        StrictHostKeyChecking no
+        UserKnownHostsFile=/dev/null
+        LogLevel QUIET
+      Host zhang-zc706-01.ece.cornell.edu
+        StrictHostKeyChecking no
+      UserKnownHostsFile=/dev/null
+      LogLevel QUIET
+   /////////////////////////////////////////    
+   $ chmod 600 ~/.ssh/config
+
+2. Copy the .elf and BOOT.bin file into the board by:
+    $ scp XXX.elf/BOOT.bin <user account>@zhang-zc706-0X-ece.cornell.edu:/mnt
+
+3. Login with your user account and password
+    * you can modify your password by type "passwd" in the command line
+    
+4. Run your program by the following commands:
+    $ cd /mnt
+    $ ./XXX.elf             
+    *** If some errors like "ERROR: File /dev/uio3 open error" happens, please run your .elf file again and these annoying errors will gone. If they still exist, please feel free to contact us.
+    *** Also now the error: "can't open /dev/mem" always exist when common user run the prgram, but it seems that the result is correct.
