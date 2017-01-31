@@ -9,16 +9,22 @@
 ##### Version : 2.0
 #####**CONTENT**:
 1. workstation
-  1. /workstation/ch1.txt - build FPGA petalinux from scratch 
+  1. /workstation/ch0.txt - instructions of installing the workstation petalinux on your workstation
+  2. /workstation/ch1.txt - build FPGA petalinux from scratch 
   2. /workstation/ch2.txt - build FPGA petalinux from the shell script (petalinux.sh)
   3. /workstation/petalinux.sh - shell script for building FPGA petalinux
-  4. /workstation/uImage - FPGA petalinux kernel built (for zc706)
-  5. /workstation/devietree.dtb - FPGA petalinux device tree (for zc706)
-  6. /workstation/uramdist.image - FPGA petalinux root file system (for zc706)
-  7. /workstation/uEnv: file to configure the MAC address
+  4. /workstation/SDcard.txt - SD card preparation 
+  5. /workstation/uImage - FPGA petalinux kernel built (for zc706)
+  6. /workstation/devicetree.dtb - FPGA petalinux device tree (for zc706)
+  7. /workstation/uramdisk.image - FPGA petalinux root file system (for zc706)
+  8. /workstation/uEnv - file to configure the MAC address
 
 2. FPGA
   1. /FPGA/config.txt - FPGA petalinux configuration after boot up on board
   2. /FPGA/user.txt - user guide for using FPGA petalinux
 
 Instructions:
+1. For common user of FPGA petalinux, please directly go to 2.2 /FPGA/user.txt
+2. If you have a zc706 board, and are trying to find a customized linux system which is compatible with SDSoC, please download the following files: /workstation/uImage, /workstation/devicetree.dtb, /workstation/uramdisk, /workstation/uEnv and follow the instructions provided in the file: /workstation/SDcard.txt and /FPGA/config.txt to boot up and cocnfigure your FPGA petalinux
+3. If you want to build a petalinux for zc706 by yourself but you don't want to learn too many details, please read: /workstation/ch0.txt, then /workstation/ch2.txt, finally /workstation/SDcard.txt to finish the building process.
+4. If you want to build a customized FPGA petalinux for another Xilinx board, say zc702, we strongly recommend you read: /workstation/ch0.txt, then /workstation/ch1.txt, finally /workstation/SDcard.txt to finish the building process. And REMEMBER to modify the necessary parameters for your own requirements.
