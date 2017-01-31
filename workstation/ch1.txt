@@ -1,0 +1,93 @@
+///////////////////////////////////////////////////////////////////////////////////////
+// Chapter 1. Building FPGA petalinux from scratch
+///////////////////////////////////////////////////////////////////////////////////////
+1. Setup linux environment
+    For Bash:
+        $ source <path-to-installed-PetaLinux>/settings.sh
+    For C shell:
+        $ source <path-to-installed-PetaLinux>/settings.csh
+        
+    You can see these lines in the terminal
+    PetaLinux environment set to '<path to directory of Petalinux>'
+    INFO: Checking free disk space
+    INFO: Checking installed tools
+    INFO: Checking installed development libraries
+    INFO: Checking network and other services
+    * If there are some errors and warnings you concerned about, please refer to ug976: Troubeshotting section
+    
+2. Create a new petalinxux project
+    2.1 Configuring hardware platform within .hdf file
+    *** You can find a good hardware definition file (hdf) from your SDSoC platform
+    *** e.g. /xilinx/SDSoC/2015.4/platforms/zc706/hardware/prebuilt/export/zc706/hdf
+    Then create the project and configure with the hardware platform within the following commands:
+        $ petalinux-create --type project --template zynq --name <project name>
+        $ petalinux-config --get-hw-description=<directory of .hdf file>
+
+    2.2 Configuring hardware platform within Board Support Package (BSP)
+    *** Downloading the BSP you need from following link:
+    *** https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/embedded-design-tools/2015-4.html
+    Then create the petalinux project within this BSP by following command:
+    $ petalinux-create -t project -s <directory of BSP>/Xilinx-ZC706-v2015.4-final.bsp --name <project name>
+
+3. FPAG petalinux configuration
+    3.1 General configration
+        $ cd <directory of petalinux project>
+        $ petalinux-config
+
+        (1) Image Packing Configuration → Root filesystem type → SD card (For permanent root file system storage)
+        (2) Auto Config Settings ---> [ ] kernel autoconfig ***Disable the kernel auto configure setting***
+        
+    3.2 Root file system configration
+        $ cd <directory of petalinux project>
+        $ petalinux-config -c rootfs
+        * enable ssh remote login
+        (1) Filesystem Packages → console/network → dropbear → enable dropbear-openssh-sftp-server
+        (2) Filesystem Packages → console/network → openssh → enable openssh-sftp-server
+        * enable libray and function for SDSoC
+        (3) Filesystem Packages → base → openssh → external-xilinx-toolchain → enable libstdc++6
+        (4) Filesystem Packages → base → openssh → external-xilinx-toolchain → enable tcf-agent
+        
+    3.3 Kernel configuration
+        $ cd <directory of petalinux project>
+        $ petalinux-config -c kernel
+        
+        (1) kernel features → enable contiguous memory allocator
+        (2) device drivers → generic driver options → enable DMA contiguous memory allocator 
+        (3) device drivers → generic driver options → size in mega bytes [256]
+        (4) device drivers → enable staging drivers; Xilinx APF accelerator driver; Xilinx APF DMA engines support
+        (5) general setup → enable Initial RAM filesystem and RAM disk (initramfs/initrd) support
+        
+    3.4 Extra configuration
+       $ vi <directory of project>/subsystems/linux/configs/device-tree/system-top.dts
+       append following code:
+            &clkc {
+               fclk-enable = <0xf>;
+            };
+            / {
+               xlnk {
+               compatible = "xlnx,xlnk-1.0";
+               clock-names = "xclk0", "xclk1", "xclk2", "xclk3";
+               clocks = <&clkc 15>, <&clkc 16>, <&clkc 17>, <&clkc 18>;
+               };
+             }; 
+             
+4. Build the FPGA petalinux
+    $ petalinux-build
+    * Note: this step may take time
+      
+5. Wrap the generated kernel and rootfs with a U0Boot header
+    $ cd images/linux/
+    $ petalinux-package --image -c kernel --format uImage
+    
+6. Rename device tree BLOB and ramdisk
+    $ mv system.dtb devicetree.dtb
+    $ mv rootfs.cpio.gz uramdisk.image.gz
+
+Now you can get the same FPGA petalinux files like (/workstation/uImage, /workstation/devicetree.dtb, /workstation/uramdisk) in the current folder: <path to your petalinux project>/images/linux/
+Please move to /workstation/SDcard.txt to learn how to configure your SD card within these FPGA petalinux files!
+
+Reference: 
+(1) UG1144 Petalinux Tools Documentaion - Refenerce Guide (v2015.4)
+    link: https://www.xilinx.com/support/documentation/sw_manuals/petalinux2015_4/ug1144-petalinux-tools-reference-guide.pdf
+(2) UG1146: SDSoC Environment User Guide - Platforms and libraries (v2015.4)
+    link: https://www.xilinx.com/support/documentation/sw_manuals/xilinx2015_4/ug1146-sdsoc-platforms-and-libraries.pdf
