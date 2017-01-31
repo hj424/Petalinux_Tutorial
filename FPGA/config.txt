@@ -1,3 +1,25 @@
 ///////////////////////////////////////////////////////////////////////////////////////
-// Chapter 0. Workstation petalinux installation guide
+// Boot with the FPGA petalinux and the further Configuration
 ///////////////////////////////////////////////////////////////////////////////////////
+1. Boot the board within Sd card
+    (1) Insert the SD card configured with FPGA petalinux 
+    (2) Set boot mode to SD - DIP switch SW11 positions 3 and 4 set to 1
+    (3) Boot the board
+    
+2. Monitor the boot up process from serial port (UART)
+    (1) Download the Tera Term for Windows: 
+        link: http://tera-term.en.lo4d.com/
+    (2) Set up the port with Bad rate 115200
+    Details: UG963 - Setting up board communications
+    
+3. Mount the SD card automatically when the system boot up
+    $ vi /etc/fstab
+    Add the following line:
+    /dev/mmcblk0p1  /mnt  auto  defaults,sync,noauto  0  0
+    
+    
+Reference: 
+(1) UG1144 Petalinux Tools Documentaion - Refenerce Guide (v2015.4)
+    link: https://www.xilinx.com/support/documentation/sw_manuals/petalinux2015_4/ug1144-petalinux-tools-reference-guide.pdf
+(2) UG963 ZC706 PCIe Targeted Reference Design (ISE Design Suite 14.3) User guide (v2015.4)
+    link: https://www.xilinx.com/support/documentation/boards_and_kits/zc706/2015_4/ug963-zc706-pcie-trd-ug.pdf
