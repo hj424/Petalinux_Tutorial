@@ -1,0 +1,19 @@
+///////////////////////////////////////////////////////////////////////////////////////
+// Configuring SD card within FPGA petalinux
+///////////////////////////////////////////////////////////////////////////////////////
+1. Partition the SD card into two parts
+    (1) 32FAT filesystem; 100M; 4MB free space; label BOOT
+    (2) ext4 filesystem; the remaining space; label rootfs 
+
+2. Copy FPGA petalinux files into BOOT partition
+    e.g. /workstation/BOOT.BIN, /workstation/uImage, /workstation/devicetree.dtb, /workstation/uramdisk.image.gz, /workstation/uEnv
+    *** Please modify the MAC address in file /workstation/uEnv ***
+    
+3. Copy permanent root file system into rootfs partition
+    e.g. $ cp /workstation/rootfs.cpio <directory of SD card>/rootfs/
+         $ sudo pax -rvf rootfs.cpio
+    *** After that, you can see the whole root file system including /bin /etc /sbin ... in the rootfs partition***
+
+Reference: 
+(1) UG1144 Petalinux Tools Documentaion - Refenerce Guide (v2015.4)
+    link: https://www.xilinx.com/support/documentation/sw_manuals/petalinux2015_4/ug1144-petalinux-tools-reference-guide.pdf
