@@ -13,6 +13,8 @@
     e.g. $ cp /workstation/rootfs.cpio <directory of SD card>/rootfs/
          $ sudo pax -rvf rootfs.cpio
     *** After that, you can see the whole root file system including /bin /etc /sbin ... in the rootfs partition***
+    
+* Please move to /FPGA/config.txt to learn how to configure the board and some other configuration after boot up!
 
 Reference: 
 (1) UG1144 Petalinux Tools Documentaion - Refenerce Guide (v2015.4)
