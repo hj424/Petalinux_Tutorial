@@ -25,7 +25,7 @@
   1. /FPGA/config.txt - FPGA petalinux configuration after boot up on board
   2. /FPGA/user.txt - user guide for using FPGA petalinux
 
-******Instructions******:
+******Instructions******
 
 1. For common user of FPGA petalinux, please directly go to 2.2 /FPGA/user.txt
 
