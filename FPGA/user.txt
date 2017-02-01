@@ -28,6 +28,8 @@ The SDSoC system compilers generate an SD card image by default in a project sub
 
 3. Login with your user account and password
     * you can modify your password by type "passwd" in the command line
+    And reboot the system to configure the FPAG logic
+    $ reboot
     
 4. Run your program by the following commands:
     $ cd /mnt
