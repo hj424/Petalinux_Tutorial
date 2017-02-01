@@ -31,7 +31,7 @@ The SDSoC system compilers generate an SD card image by default in a project sub
     And reboot the system to configure the FPAG logic
     $ reboot
     
-4. Run your program by the following commands:
+4. Login again and run your program by the following commands:
     $ cd /mnt
     $ ./XXX.elf             
     *** If some errors like "ERROR: File /dev/uio3 open error" happens, please run your .elf file again and these annoying errors will gone. If they still exist, please feel free to contact us.
