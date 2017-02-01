@@ -6,7 +6,7 @@ The SDSoC system compilers generate an SD card image by default in a project sub
 • README.TXT- contains brief instructions on how to run the application
 • BOOT.BIN - the boot image contains first stage boot loader (FSBL), boot program (u-boot), and the FPGA bitstream
 • uImage, devicetree.dtb, uramdisk.image.gz - Linux boot image
-• <app>.elf - the application binary executable
+• <app>.elf - the application executable file
 
 1. Modify login settings
   $ vi ~/.ssh/config
