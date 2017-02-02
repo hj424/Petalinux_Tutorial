@@ -23,8 +23,9 @@ The SDSoC system compilers generate an SD card image by default in a project sub
    /////////////////////////////////////////    
    $ chmod 600 ~/.ssh/config
 
-2. Copy the .elf and BOOT.bin file into the board by:
-    $ scp XXX.elf/BOOT.bin <user account>@zhang-zc706-0X-ece.cornell.edu:/mnt
+2. * Copy the BOOT.bin to the directory /mnt; and the .elf to your home directory.
+    $ scp BOOT.bin <user account>@zhang-zc706-0X-ece.cornell.edu:/mnt
+    $ scp XXX.elf <user account>@zhang-zc706-0X-ece.cornell.edu:~
 
 3. Login with your user account and password
     * you can modify your password by type "passwd" in the command line
@@ -32,7 +33,6 @@ The SDSoC system compilers generate an SD card image by default in a project sub
     $ reboot
     
 4. Login again and run your program by the following commands:
-    $ cd /mnt
     $ ./XXX.elf             
     *** If some errors like "ERROR: File /dev/uio3 open error" happens, please run your .elf file again and these annoying errors will gone. If they still exist, please feel free to contact us.
     *** Also now the error: "can't open /dev/mem" always exist when common user run the prgram, but it seems that the result is correct.
