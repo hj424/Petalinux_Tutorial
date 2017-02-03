@@ -1,7 +1,7 @@
 # Petalinux_Tutorial
 -- Let's build a FPAG petalinux by the workstation petalinux!
 ### *** Definition clarification:
-###(1) Workstation(Desktop) petalinux (petalinux 15.4-yocto 1.8): Software design tool for building customized embedded Linux distribution
+###(1) Workstation(Desktop) petalinux (petalinux 15.4-yocto 1.8): Software design tool for building customized embedded Linux system
 ###(2) FPGA (SoC) petalinux: Linux system runs on zc706
 
 ##### Authors : Baohui Wang (bhwang@tju.edu.cn); Hanchen Jin (hj424@cornell.edu)
