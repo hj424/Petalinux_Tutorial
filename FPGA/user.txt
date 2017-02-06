@@ -23,7 +23,7 @@ The SDSoC system compilers generate an SD card image by default in a project sub
    /////////////////////////////////////////    
    $ chmod 600 ~/.ssh/config
 
-2. * Copy the BOOT.bin to the directory /mnt; and the .elf to your home directory.
+2. * Copy the BOOT.bin to the directory /mnt; and all other files ( .elf, data, cfg, etc.) to your home directory.
     $ scp BOOT.bin <user account>@zhang-zc706-0X-ece.cornell.edu:/mnt
     $ scp XXX.elf <user account>@zhang-zc706-0X-ece.cornell.edu:~
 
